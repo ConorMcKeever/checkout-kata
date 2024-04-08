@@ -17,6 +17,11 @@ func main() {
 		line := scanner.Text()
 		line = strings.TrimSpace(line)
 
+		if line == "total" {
+			fmt.Printf("Total: %d\n", checkout.GetTotalPrice())
+			continue
+		}
+
 		err := checkout.Scan(line)
 		if err != nil {
 			fmt.Printf("Error: %v\n", err)
