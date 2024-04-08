@@ -22,16 +22,26 @@ func TestInput(t *testing.T) {
 	}
 }
 
-// func TestTotals(t *testing.T) {
-// 	checkEquals(t, "", 0)
-// 	checkEquals(t, "A", 50)
-// 	checkEquals(t, "AB", 80)
-// 	checkEquals(t, "CDBA", 115)
-// }
+func TestTotals(t *testing.T) {
+	CheckEquals(t, "", 0)
+	CheckEquals(t, "A", 50)
+	CheckEquals(t, "AB", 80)
+	CheckEquals(t, "CDBA", 115)
+}
 
-// func checkEquals(t *testing.T, items string, expectedTotal int) {
-// 	// code for checking total
-// }
+func CheckEquals(t *testing.T, items string, expectedTotal int) {
+	co := pkg.NewCheckout()
+	for _, item := range items {
+		err := co.Scan(string(item))
+		if err != nil {
+			t.Fatal(err)
+		}
+	}
+	total := co.GetTotalPrice()
+	if total != expectedTotal {
+		t.Errorf("Expected total to be %d, got %d", expectedTotal, total)
+	}
+}
 
 // func TestIncremental(t *testing.T) {
 // 	co := NewCheckout()
