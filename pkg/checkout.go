@@ -22,7 +22,7 @@ type Checkout struct {
 	cart        map[string]int
 }
 
-func NewCheckout() *Checkout {
+func NewCheckout() ICheckout {
 	item_prices := map[string]int{
 		"A": 50,
 		"B": 30,
@@ -43,7 +43,7 @@ func (c *Checkout) Scan(item string) error {
 	item = strings.ToUpper(item)
 
 	if _, ok := c.item_prices[item]; !ok {
-		return errors.New("invalid item")
+		return errors.New("invalid item or item does not exist")
 	}
 	c.cart[item]++
 	log.Printf("Adding item: %v to cart", item)

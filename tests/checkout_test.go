@@ -63,7 +63,7 @@ func TestIncremental(t *testing.T) {
 	CheckTotal(t, co, 175)
 }
 
-func CheckTotal(t *testing.T, co *pkg.Checkout, expectedTotal int) {
+func CheckTotal(t *testing.T, co pkg.ICheckout, expectedTotal int) {
 	total := co.GetTotalPrice()
 	if total != expectedTotal {
 		t.Errorf("Expected total to be %d, got %d", expectedTotal, total)
