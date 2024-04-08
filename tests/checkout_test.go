@@ -32,7 +32,6 @@ func TestTotals(t *testing.T) {
 func TestDeals(t *testing.T) {
 	CheckEquals(t, "AAA", 130)
 	CheckEquals(t, "BB", 45)
-
 }
 
 func CheckEquals(t *testing.T, items string, expectedTotal int) {
@@ -49,21 +48,24 @@ func CheckEquals(t *testing.T, items string, expectedTotal int) {
 	}
 }
 
-// func TestIncremental(t *testing.T) {
-// 	co := NewCheckout()
-// 	checkTotal(t, co, 0)
-// 	co.Scan("A")
-// 	checkTotal(t, co, 50)
-// 	co.Scan("B")
-// 	checkTotal(t, co, 80)
-// 	co.Scan("A")
-// 	checkTotal(t, co, 130)
-// 	co.Scan("A")
-// 	checkTotal(t, co, 160)
-// 	co.Scan("B")
-// 	checkTotal(t, co, 175)
-// }
+func TestIncremental(t *testing.T) {
+	co := pkg.NewCheckout()
+	CheckTotal(t, co, 0)
+	co.Scan("A")
+	CheckTotal(t, co, 50)
+	co.Scan("B")
+	CheckTotal(t, co, 80)
+	co.Scan("A")
+	CheckTotal(t, co, 130)
+	co.Scan("A")
+	CheckTotal(t, co, 160)
+	co.Scan("B")
+	CheckTotal(t, co, 175)
+}
 
-// func checkTotal(t *testing.T, co *Checkout, expectedTotal int) {
-// 	// code for checking incremental total
-// }
+func CheckTotal(t *testing.T, co *pkg.Checkout, expectedTotal int) {
+	total := co.GetTotalPrice()
+	if total != expectedTotal {
+		t.Errorf("Expected total to be %d, got %d", expectedTotal, total)
+	}
+}
