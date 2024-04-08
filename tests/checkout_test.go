@@ -29,6 +29,12 @@ func TestTotals(t *testing.T) {
 	CheckEquals(t, "CDBA", 115)
 }
 
+func TestDeals(t *testing.T) {
+	CheckEquals(t, "AAA", 130)
+	CheckEquals(t, "BB", 45)
+
+}
+
 func CheckEquals(t *testing.T, items string, expectedTotal int) {
 	co := pkg.NewCheckout()
 	for _, item := range items {
