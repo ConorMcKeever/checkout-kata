@@ -17,6 +17,7 @@ func checkEquals(t *testing.T, items string, expectedTotal int) {
 
 func TestIncremental(t *testing.T) {
 	co := NewCheckout()
+	test
 	checkTotal(t, co, 0)
 	co.Scan("A")
 	checkTotal(t, co, 50)
