@@ -1,3 +1,3 @@
-module main
+module checkout-kata
 
 go 1.19
