@@ -22,3 +22,10 @@ interface ICheckout
     int GetTotalPrice();
 }
 ```
+
+# Run instructions
+
+To run the tests use the command: go test ./tests/checkout_test.go
+To use the function in CLI: go run *.go
+
+
