@@ -1,3 +1,3 @@
-module checkout
+module main
 
 go 1.19
